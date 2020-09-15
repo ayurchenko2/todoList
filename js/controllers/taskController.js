@@ -23,7 +23,7 @@ var todoList = angular.module("todoList", []);
     $scope.list = model;
     $scope.addGroupTask = function (textGroup) {
         $scope.list.taskGroup.push({ groupName: textGroup, tasks: [], totalDone: 0 });
-    };
+    }
     $scope.addTask = function (textTask) {
         $scope.list.taskGroup[$scope.data.mode].tasks.push({ name: textTask, done: false });
     }
@@ -34,7 +34,7 @@ var todoList = angular.module("todoList", []);
         $scope.list2 = model.taskGroup[$scope.data.mode];
         return 'taskList.html';
       }
-    };
+    }
     $scope.updateDoneTask = function () {
       for(var i = 0; i<$scope.list.taskGroup.length; i++)
       {

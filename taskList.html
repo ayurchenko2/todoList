@@ -1,3 +1,9 @@
+<br>
+<br>
+<label>
+  Task filter:
+  <input class="form-control" id="taskSearchInput" type="text" placeholder="Search..">
+</label>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -5,15 +11,16 @@
       <th>Done</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="taskTable">
     <tr ng-repeat="task in list2.tasks">
-      <td>{{task.name}}</td>
+      <td ng-cloak data-ng-class="task.done && 'strikethrough' || 'null'">{{task.name}}</td>
       <td><input type="checkbox" ng-model="task.done" /></td>
       {{ updateDoneTask() }}
     </tr>
   </tbody>
 </table>
 <div class="container">
-  <input class="form-control" ng-model="textTask" placeholder = "New Task..." />
-  <button class="btn btn-default" ng-click="addTask(textTask)">Create New Task</button>
+  <input class="form-control" ng-model="textTask" ng-keyup="$event.keyCode == 13 ? addTask(textTask) : null" placeholder = "New Task..." />
 </div>
+
+<script src="js/controllers/filterTasks.js"></script>
