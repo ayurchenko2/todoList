@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="todoList">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div ng-controller="taskController">
+    <!--<ng-include src="'groupList.html'"></ng-include>-->
+    <div ng-repeat="button in list.taskGroup">
+        <label>
+            <input type="radio" ng-model="data.mode" value="{{$index}}" name="modes" />
+            <span ng-bind="button.groupName+' ('+button.tasks.length+'/'+button.totalDone+')'"></span>
+        </label>
+    </div>
+    <div ng-include="setFile()"></div>
+    <div class="navbar-fixed-bottom row-fluid">
+      <div class="navbar-inner">
+        <div class="container">
+          <input class="form-control" ng-model="textGroup" placeholder = "New Task Group..." />
+          <button class="btn btn-default" ng-click="addGroupTask(textGroup)">Create New Group</button>
+          <!--<button class="btn btn-default" ng-click="setFile(-1)">ShowNumber</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/lib/angular.min.js"></script>
+  <script type="text/javascript">
+  var todoList = angular.module('todoList', []);
+  </script>
+  <script src="js/controllers/taskController.js"></script>
+</body>
+</html>
